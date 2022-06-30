@@ -9,14 +9,14 @@ public class Item {
     //User should not be able to change any of these properties
 
     private String name;
-    private BigDecimal cost;
+    private BigDecimal price;
     private int inventory; // no of items in inventory
 
 
 
-    public Item(String name, String cost, int inventory) {
+    public Item(String name, String price, int inventory) {
         this.name = name;
-        this.cost = new BigDecimal(cost);
+        this.price = new BigDecimal(price);
         this.inventory = inventory;
     }
 
@@ -29,11 +29,11 @@ public class Item {
     }
 
     public BigDecimal getCost() {
-        return cost;
+        return price;
     }
 
     public void setCost(BigDecimal cost) {
-        this.cost = cost;
+        this.price = cost;
     }
 
     public int getInventory() {
@@ -48,7 +48,7 @@ public class Item {
     public int hashCode() {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.name);
-        hash = 97 * hash + Objects.hashCode(this.cost);
+        hash = 97 * hash + Objects.hashCode(this.price);
         hash = 97 * hash + this.inventory;
         return hash;
     }
@@ -71,7 +71,7 @@ public class Item {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.cost, other.cost)) {
+        if (!Objects.equals(this.price, other.price)) {
             return false;
         }
         return true;
@@ -79,6 +79,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" + "name=" + name + ", cost=" + cost + ", inventory=" + inventory + '}';
+        return "Item{" + "name=" + name + ", price=" + price + ", inventory=" + inventory + '}';
     }
 }
