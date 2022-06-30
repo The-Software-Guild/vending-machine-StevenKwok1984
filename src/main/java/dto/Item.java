@@ -16,6 +16,10 @@ public class Item {
         this.inventory = inventory;
     }
 
+    public Item(String name) {
+        this.name = name;
+    }
+
     // Methods for overriding
     @Override
     public int hashCode() {
