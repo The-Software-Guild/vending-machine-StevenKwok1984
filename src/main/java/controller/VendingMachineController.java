@@ -55,8 +55,6 @@ public class VendingMachineController {
         exitMessage();
 
     }
-
-
     private void getMenu() throws VendingMachinePersistenceException {
         Map<String, BigDecimal> itemsInStockWithPrices = service.getItemsInStockWithPrices();
         view.displayMenu(itemsInStockWithPrices);
@@ -66,12 +64,16 @@ public class VendingMachineController {
         return view.getMoney();
     }
 
-    private String getItemSelection() {
+    private String getItemSelection(){
         return view.getItemSelection();
     }
 
     private void exitMessage() {
         view.displayExitBanner();
+    }
+
+    private void unknownCommand() {
+        view.displayUnknownCommandBanner();
     }
 
     private void getItem(String name, BigDecimal money) throws InsufficientFundsException, NoItemInventoryException, VendingMachinePersistenceException {
@@ -80,7 +82,5 @@ public class VendingMachineController {
         view.displayChangeDuePerCoin(changeDuePerCoin);
         view.displayEnjoyBanner(name);
     }
-
-
 
 }

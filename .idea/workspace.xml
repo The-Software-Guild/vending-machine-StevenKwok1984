@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20e93261-7dab-487c-8998-1176d63145ba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/VendingMachineServiceLayerImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/dao/VendingMachineDaoFileImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VendingMachineTestFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VendingMachineTestFile.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dao/VendingMachineAuditDaoFileImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VendingMachineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VendingMachineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDaoFileImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDaoFileImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,13 +58,20 @@
       <recent name="C:\Users\Derek\OneDrive - University of Glasgow\Documents\GitHub\vending-machine-StevenKwok1984\src\test\java\dao" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="src.test" />
       <recent name="src.test.java.dao" />
+      <recent name="src.test" />
       <recent name="src.test.java" />
       <recent name="src.main.java.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.VendingMachineAuditDaoFileImplTest">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="App" />
+      <module name="vending-machine-StevenKwok1984" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="src.main.java.App" />
       <module name="vending-machine-StevenKwok1984" />
@@ -112,22 +115,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendingMachineServiceLayerImplTest.testGetChangePerCoin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="vending-machine-StevenKwok1984" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="src.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="src.test" />
-      <option name="MAIN_CLASS_NAME" value="src.test.VendingMachineServiceLayerImplTest" />
-      <option name="METHOD_NAME" value="testGetChangePerCoin" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="VendingMachineServiceLayerImplTest.testGetItem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="vending-machine-StevenKwok1984" />
       <extension name="coverage">
@@ -146,11 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.VendingMachineAuditDaoFileImplTest" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.App (1)" />
+        <item itemvalue="JUnit.VendingMachineAuditDaoFileImplTest" />
         <item itemvalue="JUnit.VendingMachineServiceLayerImplTest" />
         <item itemvalue="JUnit.VendingMachineServiceLayerImplTest.testGetItem" />
-        <item itemvalue="JUnit.VendingMachineServiceLayerImplTest.testGetChangePerCoin" />
       </list>
     </recent_temporary>
   </component>
@@ -164,5 +151,16 @@
       <updated>1656422157234</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/VendingMachineController.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

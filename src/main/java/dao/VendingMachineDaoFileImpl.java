@@ -20,13 +20,11 @@ import java.util.stream.Collectors;
 public class VendingMachineDaoFileImpl implements VendingMachineDao {
     private Map <String, Item> items = new HashMap<>();
     public static final String DELIMITER = "::";
-    private final String VENDING_MACHINE_FILE;
+    private String VENDING_MACHINE_FILE;
 
-    public VendingMachineDaoFileImpl() {
-        VENDING_MACHINE_FILE = "VendingMachine.txt";
-    }
-    public VendingMachineDaoFileImpl(String testFile) {
-        VENDING_MACHINE_FILE = testFile;
+
+    public VendingMachineDaoFileImpl(String file) {
+        VENDING_MACHINE_FILE = file;
     }
 
     @Override
