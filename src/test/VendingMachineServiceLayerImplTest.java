@@ -54,7 +54,7 @@ class VendingMachineServiceLayerImplTest {
     public void testCheckIfEnoughMoney() {
         // ARRANGE
         Item hariboClone = new Item("Haribo");
-        hariboClone.setPrice(new BigDecimal("1.60"));
+        hariboClone.setCost(new BigDecimal("1.60"));
         hariboClone.setInventory(9);
 
         BigDecimal enoughMoney = new BigDecimal("2.00");
@@ -81,7 +81,7 @@ class VendingMachineServiceLayerImplTest {
     public void testGetChangePerCoin() {
         //ARRANGE
         Item hariboClone = new Item("Haribo");
-        hariboClone.setPrice(new BigDecimal("1.60"));
+        hariboClone.setCost(new BigDecimal("1.60"));
         hariboClone.setInventory(9);
 
         BigDecimal money = new BigDecimal("2.50");
@@ -103,12 +103,12 @@ class VendingMachineServiceLayerImplTest {
     public void testGetItem() throws InsufficientFundsException, VendingMachinePersistenceException, NoItemInventoryException {
         //ARRANGE
         Item snickersClone = new Item("Snickers");
-        snickersClone.setPrice(new BigDecimal("2.10"));
+        snickersClone.setCost(new BigDecimal("2.10"));
         snickersClone.setInventory(0);
         BigDecimal money = new BigDecimal("3.00");
 
         Item malteasersClone = new Item("Malteasers");
-        malteasersClone.setPrice(new BigDecimal("2.10"));
+        malteasersClone.setCost(new BigDecimal("2.10"));
         malteasersClone.setInventory(testDao.getItemInventory("Malteasers"));
 
         Item itemWanted = null;

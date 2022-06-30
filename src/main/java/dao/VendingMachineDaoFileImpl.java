@@ -20,11 +20,13 @@ import java.util.stream.Collectors;
 public class VendingMachineDaoFileImpl implements VendingMachineDao {
     private Map <String, Item> items = new HashMap<>();
     public static final String DELIMITER = "::";
-    private String VENDING_MACHINE_FILE;
+    private final String VENDING_MACHINE_FILE;
 
-
-    public VendingMachineDaoFileImpl(String file) {
-        VENDING_MACHINE_FILE = file;
+    public VendingMachineDaoFileImpl() {
+        VENDING_MACHINE_FILE = "VendingMachine.txt";
+    }
+    public VendingMachineDaoFileImpl(String testFile) {
+        VENDING_MACHINE_FILE = testFile;
     }
 
     @Override
@@ -46,7 +48,37 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
     public Item getItem(String name) throws VendingMachinePersistenceException {
         loadMachine();
         return items.get(name);
+//        Set<String> names = items.keySet();
+//
+//        for(String n : names){
+//
+//            if(name.equalsIgnoreCase(name))
+//            {
+//                return items.get(n);
+//            }
+//        }
+//
+//        return null;
     }
+
+    //Dont think i need the method below, ignore for now.
+//    @Override
+//    public List<String> getListOfItemNamesInStock()throws VendingMachinePersistenceException {
+//        loadMachine();
+//        //Return a list of the items names where the item inventory
+//        //is greater than 0, i.e. get the keys where the inventory>0
+//
+//        //Filter the map to begin with
+//        Map<String, Item> filteredMap = items.entrySet()
+//                .stream()
+//                .filter(map -> map.getValue().getInventory() >=0)
+//                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
+//
+//        //Once map is filtered, retrieve the names i.e. the keys
+//        List<String> itemsInStock = (List<String>) filteredMap.keySet();
+//
+//        return itemsInStock;
+//    }
 
 
     @Override
@@ -58,18 +90,18 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         Map<String, BigDecimal> itemsInStockWithCosts = items.entrySet()
                 .stream()
                 .filter(map -> map.getValue().getInventory() > 0)
-                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue().getPrice()));
+                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue().getCost()));
 
         return itemsInStockWithCosts;
 
     }
 
 
-    //Marshall: process of transforming memory representation of an object to a data format
+    //Marshall: process of transforming memory represenetation of an object to a data format
     //suit for permanent storage
     private String marshallItem (Item anItem) {
         String itemAsText = anItem.getName() + DELIMITER;
-        itemAsText += anItem.getPrice() + DELIMITER;
+        itemAsText += anItem.getCost() + DELIMITER;
         itemAsText += anItem.getInventory();
         return itemAsText;
     }
@@ -82,7 +114,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         String name = itemTokens[0];
         Item itemFromFile = new Item(name);
         BigDecimal bigDecimal = new BigDecimal(itemTokens[1]);
-        itemFromFile.setPrice(bigDecimal);
+        itemFromFile.setCost(bigDecimal);
         itemFromFile.setInventory(Integer.parseInt(itemTokens[2]));
         return itemFromFile;
     }

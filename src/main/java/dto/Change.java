@@ -8,9 +8,9 @@ import java.util.Map;
 
 public class Change {
 
-    public static BigDecimal changeDutInPennies(BigDecimal itemCost, BigDecimal money) {
+    public static BigDecimal changeDueInPennies (BigDecimal itemCost, BigDecimal money) {
         BigDecimal changeDueInPennies = (money.subtract(itemCost)).multiply(new BigDecimal("100"));
-        System.out.println("Change due: $" + (changeDueInPennies));
+        System.out.println("Change due: $" + (changeDueInPennies.divide(new BigDecimal("100"),2,RoundingMode.HALF_UP).toString()));
         return changeDueInPennies;
     }
 
@@ -22,46 +22,47 @@ public class Change {
         }
 
         ArrayList<BigDecimal> coins = new ArrayList<BigDecimal>();
-        for (String coin : coinStringList) {
+        for (String coin:coinStringList) {
             coins.add(new BigDecimal(coin));
         }
 
-        BigDecimal changeDueInPennies = changeDutInPennies(itemCost, money);
-        // Calculate the number of quarters, dimes, nickels and pennies
-        // for returning to the user
-        BigDecimal noOfCoins;
-        BigDecimal zero = BigDecimal.ZERO;
-        // Map <coin, noOfCoins
+        BigDecimal changeDueInPennies = changeDueInPennies(itemCost, money);
+        //Calculates the number of quarters, dimes, nickels and pennies due
+        //back to the user.
+        BigDecimal noOfCoin;
+        BigDecimal zero = new BigDecimal("0");
+        //Map <coin, noOfCoin>
         Map <BigDecimal, BigDecimal> amountPerCoin = new HashMap<>();
 
-        // for every coin in the array:
+        //for every coin in the array:
         for (BigDecimal coin : coins) {
             //if the change is greater than or equal to the coin amount
             if (changeDueInPennies.compareTo(coin) >= 0) {
+                //If the coin amounts does not exactly divide by the change amount
                 if (!changeDueInPennies.remainder(coin).equals(zero)) {
                     //the number of coins of coin[i] required will be the floor division of change amount/coin
-                    noOfCoins = changeDueInPennies.divide(coin,0,RoundingMode.DOWN);
-                    // add coin type
-                    amountPerCoin.put(coin, noOfCoins);
-                    // remaining amounts is updated
+                    noOfCoin = changeDueInPennies.divide(coin,0,RoundingMode.DOWN);
+                    //add the type of coin and amount of coin to the map
+                    amountPerCoin.put(coin, noOfCoin);
+                    //the change amount is updated to be the remaining amount
                     changeDueInPennies = changeDueInPennies.remainder(coin);
-                    if (changeDueInPennies.compareTo(zero) < 0){
+                    //if the change amount is less than or equal to 0, stop the loop
+                    if (changeDueInPennies.compareTo(zero)<0) {
                         break;
                     }
                     //if the change divided by the coin is an exact number/integer
-                } else if (changeDueInPennies.remainder(coin).equals(zero)) {
-                    noOfCoins = changeDueInPennies.divide(coin,0,RoundingMode.DOWN);
-                    amountPerCoin.put(coin, noOfCoins);
-                    // if change less than or equal to zero, stop
-                    if ((changeDueInPennies.compareTo(zero)) < 0) {
+                } else if (changeDueInPennies.remainder(coin).equals(zero)) {  //could change to just else
+                    noOfCoin = changeDueInPennies.divide(coin,0,RoundingMode.DOWN);
+                    amountPerCoin.put(coin, noOfCoin);
+                    //if the change amount if less than or equal to 0, stop the loop
+                    if ((changeDueInPennies.compareTo(zero))<0) {
                         break;
                     }
                 }
             } else {
-                ;
+                ;  //"pass"
             }
-        } // loop end here
-
+        }//end of for loop
         return amountPerCoin;
     }
 }

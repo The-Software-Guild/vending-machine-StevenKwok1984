@@ -39,7 +39,7 @@ class VendingMachineDaoFileImplTest {
     public void testGetItem() throws VendingMachinePersistenceException {
         //ARRANGE
         Item snickersClone = new Item("Snickers");
-        snickersClone.setPrice(new BigDecimal("2.10"));
+        snickersClone.setCost(new BigDecimal("2.10"));
         snickersClone.setInventory(0);
 
         //ACT

@@ -5,14 +5,18 @@ import java.util.Objects;
 
 public class Item {
 
-    private String name;
-    private BigDecimal price;
-    private int inventory; // number of items in inventory
+    //Item DTO Data Transfer Object
+    //User should not be able to change any of these properties
 
-    // constructors
-    public Item(String name, String price, int inventory) {
+    private String name;
+    private BigDecimal cost;
+    private int inventory; // no of items in inventory
+
+
+
+    public Item(String name, String cost, int inventory) {
         this.name = name;
-        this.price = new BigDecimal(price);
+        this.cost = new BigDecimal(cost);
         this.inventory = inventory;
     }
 
@@ -20,12 +24,31 @@ public class Item {
         this.name = name;
     }
 
-    // Methods for overriding
+    public String getName() {
+        return name;
+    }
+
+    public BigDecimal getCost() {
+        return cost;
+    }
+
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
+    }
+
+    public int getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(int inventory) {
+        this.inventory = inventory;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.name);
-        hash = 97 * hash + Objects.hashCode(this.price);
+        hash = 97 * hash + Objects.hashCode(this.cost);
         hash = 97 * hash + this.inventory;
         return hash;
     }
@@ -48,7 +71,7 @@ public class Item {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.price, other.price)) {
+        if (!Objects.equals(this.cost, other.cost)) {
             return false;
         }
         return true;
@@ -56,35 +79,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" + "name=" + name + ", price=" + price + ", inventory=" + inventory + '}';
-    }
-
-
-
-    // getters and setters
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public int getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(int inventory) {
-        this.inventory = inventory;
+        return "Item{" + "name=" + name + ", cost=" + cost + ", inventory=" + inventory + '}';
     }
 }
