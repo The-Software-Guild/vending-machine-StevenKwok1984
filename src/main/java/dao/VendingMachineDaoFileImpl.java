@@ -2,6 +2,7 @@ package src.main.java.dao;
 
 
 import src.main.java.dto.Item;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,7 +17,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class VendingMachineDaoFileImpl implements VendingMachineDao{
+public class VendingMachineDaoFileImpl implements VendingMachineDao {
     private Map <String, Item> items = new HashMap<>();
     public static final String DELIMITER = "::";
     private final String VENDING_MACHINE_FILE;
@@ -35,40 +36,38 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao{
     }
 
     @Override
-    public void removeAnItemFromInventory(String name) throws VendingMachinePersistenceException {
+    public void removeOneItemFromInventory(String name) throws VendingMachinePersistenceException {
         loadMachine();
         int prevInventory = items.get(name).getInventory();
         items.get(name).setInventory(prevInventory-1);
         writeMachine();
     }
 
-    // Return an item
+    //Returns item or null if there is no item associated with the given item name
     @Override
     public Item getItem(String name) throws VendingMachinePersistenceException {
         loadMachine();
         return items.get(name);
     }
 
-    @Override
-    public Map<String, BigDecimal> getMapOfItemNamesInStockWithPrices() throws VendingMachinePersistenceException {
-        loadMachine();
 
-        Map<String, BigDecimal> itemsInStockWithPrices = items.entrySet()
+    @Override
+    public Map<String,BigDecimal> getMapOfItemNamesInStockWithPrices() throws VendingMachinePersistenceException{
+        loadMachine();
+        //Return a list of the items names where the item inventory
+        //is greater than 0, i.e. get the keys where the inventory>0
+
+        Map<String, BigDecimal> itemsInStockWithCosts = items.entrySet()
                 .stream()
                 .filter(map -> map.getValue().getInventory() > 0)
                 .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue().getPrice()));
-        return itemsInStockWithPrices;
-    }
 
-    @Override
-    public List<Item> getAllItems() throws VendingMachinePersistenceException{
-        loadMachine();
-        return new ArrayList<>(items.values());
+        return itemsInStockWithCosts;
+
     }
 
 
-
-    // Marshall: process of transforming memory represenetation of an object to a data format
+    //Marshall: process of transforming memory representation of an object to a data format
     //suit for permanent storage
     private String marshallItem (Item anItem) {
         String itemAsText = anItem.getName() + DELIMITER;
@@ -90,7 +89,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao{
         return itemFromFile;
     }
 
-    // Read and Write files
+
     private void loadMachine() throws VendingMachinePersistenceException {
         Scanner scanner;
 
@@ -113,6 +112,14 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao{
         }
         scanner.close();
     }
+
+
+    @Override
+    public  List<Item> getAllItems() throws VendingMachinePersistenceException {
+        loadMachine();
+        return new ArrayList(items.values());
+    }
+
 
     private void writeMachine() throws VendingMachinePersistenceException {
         PrintWriter out;

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
-public class VendingMachineAuditDaoFileImpl implements VendingMachineAuditDao{
+public class VendingMachineAuditDaoFileImpl implements VendingMachineAuditDao {
     private final String AUDIT_FILE;
     // constructors
     public VendingMachineAuditDaoFileImpl(){

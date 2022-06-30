@@ -62,7 +62,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
                                                         NoItemInventoryException,
                                                         VendingMachinePersistenceException {
         if (dao.getItemInventory(name) >0) {
-            dao.removeAnItemFromInventory(name);
+            dao.removeOneItemFromInventory(name);
             auditDao.writeAuditEntry(" One " + name + " removed.");
         } else {
             throw new NoItemInventoryException("Error: " + name + " is out of stock.");

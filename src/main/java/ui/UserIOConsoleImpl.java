@@ -18,16 +18,6 @@ public class UserIOConsoleImpl implements UserIO{
         return console.nextLine();
     }
 
-    /**
-     *
-     * A simple method that takes in a message to display on the console,
-     * and continually reprompts the user with that message until they enter an integer
-     * to be returned as the answer to that message.
-     *
-     * @param prompt - String explaining what information you want from the user.
-     * @return the answer to the message as integer
-     */
-
     @Override
     public int readInt(String prompt) {
         boolean invalidInput = true;
@@ -57,16 +47,7 @@ public class UserIOConsoleImpl implements UserIO{
         }
     }
 
-    /**
-     * A slightly more complex method that takes in a message to display on the console,
-     * and continually reprompts the user with that message until they enter a double
-     * within the specified min/max range to be returned as the answer to that message.
-     *
-     * @param prompt - String explaining what information you want from the user.
-     * @param min - minimum acceptable value for return
-     * @param max - maximum acceptable value for return
-     * @return an long value as an answer to the message prompt within the min/max range
-     */
+
     @Override
     public long readLong(String prompt, long min, long max) {
         long result;
@@ -77,15 +58,7 @@ public class UserIOConsoleImpl implements UserIO{
         return result;
     }
 
-    /**
-     *
-     * A simple method that takes in a message to display on the console,
-     * and continually reprompts the user with that message until they enter a float
-     * to be returned as the answer to that message.
-     *
-     * @param prompt - String explaining what information you want from the user.
-     * @return the answer to the message as float
-     */
+
     @Override
     public float readFloat(String prompt) {
         while (true) {
@@ -97,17 +70,7 @@ public class UserIOConsoleImpl implements UserIO{
         }
     }
 
-    /**
-     *
-     * A slightly more complex method that takes in a message to display on the console,
-     * and continually reprompts the user with that message until they enter a float
-     * within the specified min/max range to be returned as the answer to that message.
-     *
-     * @param msgPrompt - String explaining what information you want from the user.
-     * @param min - minimum acceptable value for return
-     * @param max - maximum acceptable value for return
-     * @return an float value as an answer to the message prompt within the min/max range
-     */
+
     @Override
     public float readFloat(String msgPrompt, float min, float max) {
         float result;
@@ -118,15 +81,7 @@ public class UserIOConsoleImpl implements UserIO{
         return result;
     }
 
-    /**
-     *
-     * A simple method that takes in a message to display on the console,
-     * and continually reprompts the user with that message until they enter a double
-     * to be returned as the answer to that message.
-     *
-     * @param msgPrompt - String explaining what information you want from the user.
-     * @return the answer to the message as double
-     */
+
     @Override
     public double readDouble(String msgPrompt) {
         while (true) {
@@ -138,17 +93,7 @@ public class UserIOConsoleImpl implements UserIO{
         }
     }
 
-    /**
-     *
-     * A slightly more complex method that takes in a message to display on the console,
-     * and continually reprompts the user with that message until they enter a double
-     * within the specified min/max range to be returned as the answer to that message.
-     *
-     * @param msgPrompt - String explaining what information you want from the user.
-     * @param min - minimum acceptable value for return
-     * @param max - maximum acceptable value for return
-     * @return an double value as an answer to the message prompt within the min/max range
-     */
+
     @Override
     public double readDouble(String msgPrompt, double min, double max) {
         double result;

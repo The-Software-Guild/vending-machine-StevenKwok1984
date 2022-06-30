@@ -5,10 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20e93261-7dab-487c-8998-1176d63145ba" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/audit" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/VendingMachineController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/dao/VendingMachineAuditDaoFileImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/dao/VendingMachineTestFile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testAuditFile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vending-machine-StevenKwok1984.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vending-machine-StevenKwok1984.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VendingMachineController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VendingMachineTestFile" beforeDir="false" afterPath="$PROJECT_DIR$/VendingMachineTestFile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VendingMachineAuditDaoFileImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/VendingMachineAuditDaoFileImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDaoFileImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDaoFileImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserIOConsoleImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserIOConsoleImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +32,7 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -36,13 +48,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Derek\OneDrive - University of Glasgow\Documents\GitHub\vending-machine-StevenKwok1984\src\test\java\dao" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="src.test.java" />
+      <recent name="src.main.java.dao" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.VendingMachineAuditDaoFileImplTest.testGetItem">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="src.main.java.App" />
       <module name="vending-machine-StevenKwok1984" />
@@ -56,8 +87,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="VendingMachineAuditDaoFileImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="vending-machine-StevenKwok1984" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.test.java.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.test.java.dao" />
+      <option name="MAIN_CLASS_NAME" value="src.test.java.dao.VendingMachineAuditDaoFileImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VendingMachineAuditDaoFileImplTest.testGetItem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="vending-machine-StevenKwok1984" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.main.java.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.test.java.dao" />
+      <option name="MAIN_CLASS_NAME" value="src.test.java.dao.VendingMachineAuditDaoFileImplTest" />
+      <option name="METHOD_NAME" value="testGetItem" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.VendingMachineAuditDaoFileImplTest.testGetItem" />
+        <item itemvalue="JUnit.VendingMachineAuditDaoFileImplTest" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
