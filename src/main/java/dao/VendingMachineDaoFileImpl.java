@@ -61,24 +61,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
 //        return null;
     }
 
-    //Dont think i need the method below, ignore for now.
-//    @Override
-//    public List<String> getListOfItemNamesInStock()throws VendingMachinePersistenceException {
-//        loadMachine();
-//        //Return a list of the items names where the item inventory
-//        //is greater than 0, i.e. get the keys where the inventory>0
-//
-//        //Filter the map to begin with
-//        Map<String, Item> filteredMap = items.entrySet()
-//                .stream()
-//                .filter(map -> map.getValue().getInventory() >=0)
-//                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
-//
-//        //Once map is filtered, retrieve the names i.e. the keys
-//        List<String> itemsInStock = (List<String>) filteredMap.keySet();
-//
-//        return itemsInStock;
-//    }
+
 
 
     @Override
