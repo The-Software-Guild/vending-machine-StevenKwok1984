@@ -58,7 +58,8 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         return wantedItem;
     }
 
-    private void removeOneItemFromInventory(String name) throws
+    @Override
+    public void removeOneItemFromInventory(String name) throws
                                                         NoItemInventoryException,
                                                         VendingMachinePersistenceException {
         if (dao.getItemInventory(name) >0) {

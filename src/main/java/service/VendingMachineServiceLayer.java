@@ -17,4 +17,9 @@ public interface VendingMachineServiceLayer {
                                                             InsufficientFundsException,
                                                             NoItemInventoryException,
                                                             VendingMachinePersistenceException;
+
+
+    void removeOneItemFromInventory(String name) throws
+                                                        NoItemInventoryException,
+                                                        VendingMachinePersistenceException;
 }
