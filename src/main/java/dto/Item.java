@@ -46,11 +46,7 @@ public class Item {
 
     @Override
     public int hashCode() {
-        int hash = 1;
-        hash = 31 * hash + Objects.hashCode(this.name);
-        hash = 31 * hash + Objects.hashCode(this.cost);
-        hash = 31 * hash + this.inventory;
-        return hash;
+        return Objects.hash(name, cost, inventory);
     }
 
 
