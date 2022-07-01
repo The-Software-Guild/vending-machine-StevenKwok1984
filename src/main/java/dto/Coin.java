@@ -3,14 +3,14 @@ package src.main.java.dto;
 public enum Coin {
     //Enum is a special class that represents a group of constants, like final variables
     QUARTER(25), DIME(10), NICKEL(5), PENNY(1);
-    private final int value;
+    private final int VALUE;
 
     Coin (int value) {
-        this.value = value;
+        this.VALUE = value;
     }
 
     private int getValue() {
-        return value;
+        return VALUE;
     }
 
     public String toString() {
