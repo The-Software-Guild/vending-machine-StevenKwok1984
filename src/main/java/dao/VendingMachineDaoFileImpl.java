@@ -36,7 +36,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
     }
 
     @Override
-    public void removeItemFromInventory(String name) throws VendingMachinePersistenceException {
+    public void removeOneItemFromInventory(String name) throws VendingMachinePersistenceException {
         loadMachine();
         int prevInventory = items.get(name).getInventory();
         items.get(name).setInventory(prevInventory-1);
@@ -48,10 +48,24 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
     public Item getItem(String name) throws VendingMachinePersistenceException {
         loadMachine();
         return items.get(name);
+//        Set<String> names = items.keySet();
+//
+//        for(String n : names){
+//
+//            if(name.equalsIgnoreCase(name))
+//            {
+//                return items.get(n);
+//            }
+//        }
+//
+//        return null;
     }
 
+
+
+
     @Override
-    public Map<String,BigDecimal> getItemNamesInStockWithPrices() throws VendingMachinePersistenceException{
+    public Map<String,BigDecimal> getMapOfItemNamesInStockWithPrices() throws VendingMachinePersistenceException{
         loadMachine();
         //Return a list of the items names where the item inventory
         //is greater than 0, i.e. get the keys where the inventory>0
@@ -59,7 +73,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         Map<String, BigDecimal> itemsInStockWithCosts = items.entrySet()
                 .stream()
                 .filter(map -> map.getValue().getInventory() > 0)
-                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue().getPrice()));
+                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue().getCost()));
 
         return itemsInStockWithCosts;
 
@@ -70,7 +84,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
     //suit for permanent storage
     private String marshallItem (Item anItem) {
         String itemAsText = anItem.getName() + DELIMITER;
-        itemAsText += anItem.getPrice() + DELIMITER;
+        itemAsText += anItem.getCost() + DELIMITER;
         itemAsText += anItem.getInventory();
         return itemAsText;
     }
@@ -83,7 +97,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         String name = itemTokens[0];
         Item itemFromFile = new Item(name);
         BigDecimal bigDecimal = new BigDecimal(itemTokens[1]);
-        itemFromFile.setPrice(bigDecimal);
+        itemFromFile.setCost(bigDecimal);
         itemFromFile.setInventory(Integer.parseInt(itemTokens[2]));
         return itemFromFile;
     }

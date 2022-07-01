@@ -1,4 +1,4 @@
-package src.test.java.service;
+package src.test;
 
 
 import java.math.BigDecimal;
@@ -25,6 +25,7 @@ class VendingMachineServiceLayerImplTest {
 
     // initialisation
     VendingMachineDao testDao = new VendingMachineDaoFileImpl("VendingMachineTestFile.txt");
+    String testAuditFile = "testAuditFile.txt";
     VendingMachineAuditDao testAuditDao = new VendingMachineAuditDaoFileImpl();
     VendingMachineServiceLayer testService = new VendingMachineServiceLayerImpl(testAuditDao,testDao);
 
@@ -52,23 +53,23 @@ class VendingMachineServiceLayerImplTest {
     @Test
     public void testCheckIfEnoughMoney() {
         // ARRANGE
-        Item pizzaClone = new Item("Pizza");
-        pizzaClone.setPrice(new BigDecimal("3.60"));
-        pizzaClone.setInventory(12);
+        Item hariboClone = new Item("Haribo");
+        hariboClone.setCost(new BigDecimal("1.60"));
+        hariboClone.setInventory(9);
 
-        BigDecimal enoughMoney = new BigDecimal("10.00");
-        BigDecimal notEnoughMoney = new BigDecimal("0.50");
+        BigDecimal enoughMoney = new BigDecimal("2.00");
+        BigDecimal notEnoughMoney = new BigDecimal("1.59");
 
         // ACT - enough
         try{
-            testService.checkIfEnoughMoney(pizzaClone, enoughMoney);
+            testService.checkIfEnoughMoney(hariboClone, enoughMoney);
         } catch (InsufficientFundsException e) {
-            fail("There is sufficient funds, exception should not have been thrown.");
+            fail("There is sufficient funds, exception should not have benn thrown.");
         }
 
         // ACT not enough
         try{
-            testService.checkIfEnoughMoney(pizzaClone, notEnoughMoney);
+            testService.checkIfEnoughMoney(hariboClone, notEnoughMoney);
             fail("There insufficient funds, exception should have been thrown");
         } catch (Exception e) {
 
@@ -79,80 +80,78 @@ class VendingMachineServiceLayerImplTest {
     @Test
     public void testGetChangePerCoin() {
         //ARRANGE
-        Item pizzaClone = new Item("Pizza");
-        pizzaClone.setPrice(new BigDecimal("3.60"));
-        pizzaClone.setInventory(12);
+        Item hariboClone = new Item("Haribo");
+        hariboClone.setCost(new BigDecimal("1.60"));
+        hariboClone.setInventory(9);
 
-        BigDecimal money = new BigDecimal("4.25");
+        BigDecimal money = new BigDecimal("2.50");
 
         // Change should be $0.90: 25c: 3, 10c: 1, 5c:1
         Map<BigDecimal, BigDecimal> expectedChangePerCoin = new HashMap<>();
-        expectedChangePerCoin.put(new BigDecimal("0.25"), new BigDecimal("2"));
-        expectedChangePerCoin.put(new BigDecimal("0.10"), new BigDecimal("1"));
+        expectedChangePerCoin.put(new BigDecimal("0.25"), new BigDecimal("3"));
+        expectedChangePerCoin.put(new BigDecimal("0.10"), new BigDecimal(1));
         expectedChangePerCoin.put(new BigDecimal("0.05"), new BigDecimal("1"));
 
         //ACT
-        Map<BigDecimal, BigDecimal> changePerCoin = testService.getChangePerCoin(pizzaClone, money);
+        Map<BigDecimal, BigDecimal> changePerCoin = testService.getChangePerCoin(hariboClone, money);
 
         //ASSERT
-        assertEquals(changePerCoin.size(), 3, "There should be three types of coins");
+        assertEquals(changePerCoin.size(), 3, "There should be three coins");
     }
 
     @Test
     public void testGetItem() throws InsufficientFundsException, VendingMachinePersistenceException, NoItemInventoryException {
         //ARRANGE
+        Item snickersClone = new Item("Snickers");
+        snickersClone.setCost(new BigDecimal("2.10"));
+        snickersClone.setInventory(0);
+        BigDecimal money = new BigDecimal("3.00");
 
-        BigDecimal money = new BigDecimal("4.00");
-
-        Item fickersClone = new Item("Fickers");
-        fickersClone.setPrice(new BigDecimal("2.10"));
-        fickersClone.setInventory(0);
-
-        Item pizzaClone = new Item("Pizza");
-        pizzaClone.setPrice(new BigDecimal("3.60"));
-        pizzaClone.setInventory(12);
+        Item malteasersClone = new Item("Malteasers");
+        malteasersClone.setCost(new BigDecimal("2.10"));
+        malteasersClone.setInventory(testDao.getItemInventory("Malteasers"));
 
         Item itemWanted = null;
         //ACT
         try {
-            itemWanted = testService.getItem("Fickers", money);
+            itemWanted = testService.getItem("Snickers", money);
             fail("The item wanted is out of stock.");
         }catch (NoItemInventoryException e) {
         }
         try {
-            itemWanted = testService.getItem("Pizza", money);
+            itemWanted = testService.getItem("Malteasers", money);
         }catch (NoItemInventoryException e) {
-            if (testDao.getItemInventory("Pizza")>0){
+            if (testDao.getItemInventory("Malteasers")>0){
                 fail("The item wanted is in stock.");
             }
 
             //ASSERT
             assertNotNull(itemWanted, "change should not be null");
-            assertEquals(itemWanted, pizzaClone,"The item retrieved should be snickers");
+            assertEquals(itemWanted, malteasersClone,"The item retrieved should be snickers");
         }
     }
 
     @Test
-    public void testRemoveItemFromInventory() throws VendingMachinePersistenceException {
+    public void testRemoveOneItemFromInventory() throws VendingMachinePersistenceException {
         //ARRANGE
-        String name = "Fickers";
+        String name = "Snickers";
 
         //There are no snickers left
         try{
             //ACT
             testService.removeOneItemFromInventory(name);
             //ASSERT
-            fail("There are no fickers left, exception should be thrown");
+            fail("There are no snickers left, exception should be thrown");
         } catch (NoItemInventoryException e) {
         }
 
-        String kitkat = "Kitkat";
+        String malteasers = "Malteasers";
         try{
             //ACT
-            testService.removeOneItemFromInventory(kitkat);
+            testService.removeOneItemFromInventory(malteasers);
         } catch (NoItemInventoryException e) {
-            if (testDao.getItemInventory(kitkat)>0){
-                fail("Kitkats are in stock, exception should not be thrown");
+            if (testDao.getItemInventory(malteasers)>0){
+                fail("Malteasers are in stock, exception should not be thrown");
             }
         }
     }

@@ -26,23 +26,23 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     public void checkIfEnoughMoney(Item item, BigDecimal inputMoney) throws InsufficientFundsException {
         //Checks if the user has input enough money to buy selected item
         //If the cost of the item is greater than the amount of money put in
-        if (item.getPrice().compareTo(inputMoney)==1) {
+        if (item.getCost().compareTo(inputMoney)==1) {
             throw new InsufficientFundsException (
-                    "ERROR: insufficient funds, your input money is $" + inputMoney + ", less than $" + item.getPrice() + ".");
+                    "ERROR: insufficient funds, you have only input "+ inputMoney);
         }
     }
 
     @Override
     public Map<String, BigDecimal>  getItemsInStockWithPrices () throws VendingMachinePersistenceException{
         //Map of key=name, value=cost
-        Map<String, BigDecimal> itemsInStockWithCosts = dao.getItemNamesInStockWithPrices();
+        Map<String, BigDecimal> itemsInStockWithCosts = dao.getMapOfItemNamesInStockWithPrices();
         return itemsInStockWithCosts;
     }
 
     @Override
     public Map<BigDecimal, BigDecimal> getChangePerCoin(Item item, BigDecimal money) {
-        BigDecimal itemCost = item.getPrice();
-        Map<BigDecimal, BigDecimal> changeDuePerCoin = Change.changePerCoin(itemCost, money);
+        BigDecimal itemCost = item.getCost();
+        Map<BigDecimal, BigDecimal> changeDuePerCoin = Change.changeDuePerCoin(itemCost, money);
         return changeDuePerCoin;
     }
 
@@ -70,7 +70,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     public void removeOneItemFromInventory (String name) throws NoItemInventoryException, VendingMachinePersistenceException {
         //Remove one item from the inventory only when there are items to be removed, i.e. inventory>0.
         if (dao.getItemInventory(name)>0) {
-            dao.removeItemFromInventory(name);
+            dao.removeOneItemFromInventory(name);
             //if an items removed, write to the audit log
             auditDao.writeAuditEntry(" One " + name + " removed");
         } else {

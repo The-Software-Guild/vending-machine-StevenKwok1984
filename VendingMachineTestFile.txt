@@ -1,4 +1,7 @@
-Pizza::3.60::11
-Kitkat::1.50::16
-Google Candy::2.00::19
-Fickers::2.10::0
+Snickers::2.10::0
+Kitkat::1.50::17
+McCoys::1.30::18
+Haribo::1.60::9
+Malteasers::2.10::1
+Starburst::1.05::17
+Cereal bar::2.50::20

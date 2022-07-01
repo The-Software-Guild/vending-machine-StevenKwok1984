@@ -9,14 +9,14 @@ public class Item {
     //User should not be able to change any of these properties
 
     private String name;
-    private BigDecimal price;
+    private BigDecimal cost;
     private int inventory; // no of items in inventory
 
 
 
-    public Item(String name, String price, int inventory) {
+    public Item(String name, String cost, int inventory) {
         this.name = name;
-        this.price = new BigDecimal(price);
+        this.cost = new BigDecimal(cost);
         this.inventory = inventory;
     }
 
@@ -24,11 +24,29 @@ public class Item {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public BigDecimal getCost() {
+        return cost;
+    }
+
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
+    }
+
+    public int getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(int inventory) {
+        this.inventory = inventory;
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, price, inventory);
+        return Objects.hash(name, cost, inventory);
     }
 
 
@@ -51,7 +69,7 @@ public class Item {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.price, other.price)) {
+        if (!Objects.equals(this.cost, other.cost)) {
             return false;
         }
         return true;
@@ -59,26 +77,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" + "name=" + name + ", price=" + price + ", inventory=" + inventory + '}';
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public int getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(int inventory) {
-        this.inventory = inventory;
+        return "Item{" + "name=" + name + ", price=" + cost + ", inventory=" + inventory + '}';
     }
 }
