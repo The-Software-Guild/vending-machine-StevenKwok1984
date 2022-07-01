@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20e93261-7dab-487c-8998-1176d63145ba" name="Changes" comment="" />
+    <list default="true" id="20e93261-7dab-487c-8998-1176d63145ba" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,19 +61,16 @@
       <recent name="src.main.java.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.VendingMachineServiceLayerImplTest.testRemoveItemFromInventory">
-    <configuration name="VendingMachineDaoFileImplTest.testGetItemNamesInStockWithPrices" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.main.java.App" />
       <module name="vending-machine-StevenKwok1984" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="src.test.java.dao.*" />
+          <option name="PATTERN" value="src.main.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="src.test.java.dao" />
-      <option name="MAIN_CLASS_NAME" value="src.test.java.dao.VendingMachineDaoFileImplTest" />
-      <option name="METHOD_NAME" value="testGetItemNamesInStockWithPrices" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -142,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.VendingMachineServiceLayerImplTest.testRemoveItemFromInventory" />
         <item itemvalue="JUnit.VendingMachineServiceLayerImplTest.testGetItem" />
         <item itemvalue="JUnit.VendingMachineServiceLayerImplTest.testGetChangePerCoin" />
         <item itemvalue="JUnit.VendingMachineServiceLayerImplTest.testCheckIfEnoughMoney" />
-        <item itemvalue="JUnit.VendingMachineDaoFileImplTest.testGetItemNamesInStockWithPrices" />
       </list>
     </recent_temporary>
   </component>
