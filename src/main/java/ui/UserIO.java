@@ -25,4 +25,7 @@ public interface UserIO {
     double readDouble(String msgPrompt, double min, double max);
 
     BigDecimal readBigDecimal(String prompt);
+
+
+    BigDecimal readBigDecimal(String prompt, BigDecimal min, BigDecimal max);
 }
