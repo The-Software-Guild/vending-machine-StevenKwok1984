@@ -19,4 +19,6 @@ public interface VendingMachineDao {
     Map<String,BigDecimal> getMapOfItemNamesInStockWithPrices() throws VendingMachinePersistenceException;
 
     List<Item> getAllItems() throws VendingMachinePersistenceException;
+
+    Map<BigDecimal, BigDecimal> getChangePerCoin(Item item, BigDecimal money);
 }

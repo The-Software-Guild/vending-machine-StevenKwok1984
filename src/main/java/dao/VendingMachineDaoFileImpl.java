@@ -1,6 +1,7 @@
 package src.main.java.dao;
 
 
+import src.main.java.dto.Change;
 import src.main.java.dto.Item;
 
 import java.io.BufferedReader;
@@ -70,6 +71,13 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
     public  List<Item> getAllItems() throws VendingMachinePersistenceException {
         loadMachine();
         return new ArrayList(items.values());
+    }
+
+    @Override
+    public Map<BigDecimal, BigDecimal> getChangePerCoin(Item item, BigDecimal money) {
+        BigDecimal itemCost = item.getCost();
+        Map<BigDecimal, BigDecimal> changeDuePerCoin = Change.changeDuePerCoin(itemCost, money);
+        return changeDuePerCoin;
     }
 
     private String marshallItem (Item anItem) {

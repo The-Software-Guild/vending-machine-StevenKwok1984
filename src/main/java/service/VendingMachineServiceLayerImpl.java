@@ -41,8 +41,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
 
     @Override
     public Map<BigDecimal, BigDecimal> getChangePerCoin(Item item, BigDecimal money) {
-        BigDecimal itemCost = item.getCost();
-        Map<BigDecimal, BigDecimal> changeDuePerCoin = Change.changeDuePerCoin(itemCost, money);
+        Map<BigDecimal, BigDecimal> changeDuePerCoin = dao.getChangePerCoin(item, money);
         return changeDuePerCoin;
     }
 

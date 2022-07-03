@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="20e93261-7dab-487c-8998-1176d63145ba" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VendingMachine.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VendingMachine.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit.txt" beforeDir="false" afterPath="$PROJECT_DIR$/audit.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDaoFileImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDaoFileImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/VendingMachineView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/VendingMachineView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +66,7 @@
       <recent name="src.main.java.dao" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestUserIO">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="vending-machine-StevenKwok1984" />
@@ -130,8 +132,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestUserIO" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.TestUserIO" />
         <item itemvalue="JUnit.VendingMachineServiceLayerImplTest" />
         <item itemvalue="Application.App (1)" />
         <item itemvalue="JUnit.VendingMachineAuditDaoFileImplTest" />
