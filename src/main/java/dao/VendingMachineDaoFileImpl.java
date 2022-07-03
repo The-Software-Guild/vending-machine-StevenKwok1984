@@ -43,22 +43,11 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         writeMachine();
     }
 
-    //Returns item or null if there is no item associated with the given item name
+
     @Override
     public Item getItem(String name) throws VendingMachinePersistenceException {
         loadMachine();
         return items.get(name);
-//        Set<String> names = items.keySet();
-//
-//        for(String n : names){
-//
-//            if(name.equalsIgnoreCase(name))
-//            {
-//                return items.get(n);
-//            }
-//        }
-//
-//        return null;
     }
 
 
@@ -67,8 +56,6 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
     @Override
     public Map<String,BigDecimal> getMapOfItemNamesInStockWithPrices() throws VendingMachinePersistenceException{
         loadMachine();
-        //Return a list of the items names where the item inventory
-        //is greater than 0, i.e. get the keys where the inventory>0
 
         Map<String, BigDecimal> itemsInStockWithCosts = items.entrySet()
                 .stream()
@@ -79,9 +66,12 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
 
     }
 
+    @Override
+    public  List<Item> getAllItems() throws VendingMachinePersistenceException {
+        loadMachine();
+        return new ArrayList(items.values());
+    }
 
-    //Marshall: process of transforming memory represenetation of an object to a data format
-    //suit for permanent storage
     private String marshallItem (Item anItem) {
         String itemAsText = anItem.getName() + DELIMITER;
         itemAsText += anItem.getCost() + DELIMITER;
@@ -89,8 +79,6 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         return itemAsText;
     }
 
-
-    //Unmarshall: process of transforming the memory representation of an object
     private Item unmarshallItem (String itemAsText){
         //split the string into an array of strings at the delimiter
         String [] itemTokens = itemAsText.split("::");
@@ -126,12 +114,6 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         scanner.close();
     }
 
-
-    @Override
-    public  List<Item> getAllItems() throws VendingMachinePersistenceException {
-        loadMachine();
-        return new ArrayList(items.values());
-    }
 
 
     private void writeMachine() throws VendingMachinePersistenceException {

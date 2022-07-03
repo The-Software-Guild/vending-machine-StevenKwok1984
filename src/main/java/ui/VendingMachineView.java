@@ -11,12 +11,11 @@ public class VendingMachineView {
         this.io = io;
     }
 
-    public BigDecimal getMoney() {
-        return io.readBigDecimal("Enter the amount money in dollars before making selection");
-    }
-
     public void displayMenuBanner() {
         io.print("=== Menu ===");
+    }
+    public BigDecimal getMoney() {
+        return io.readBigDecimal("Enter the amount of money in dollars before selection");
     }
 
     public void displayMenu(Map<String, BigDecimal> itemsInStockWithPrices) {

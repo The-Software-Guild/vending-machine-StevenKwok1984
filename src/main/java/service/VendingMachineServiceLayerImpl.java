@@ -48,7 +48,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
 
     @Override
     public Item getItem(String name, BigDecimal inputMoney) throws InsufficientFundsException, NoItemInventoryException, VendingMachinePersistenceException {
-        Item wantedItem = dao.getItem(name);   //the inputs are case sensitive.
+        Item wantedItem = dao.getItem(name);   //the inputs are case-sensitive.
 
         //If the wanted item returns null, the item does not exist in the items map
         if (wantedItem == null) {
