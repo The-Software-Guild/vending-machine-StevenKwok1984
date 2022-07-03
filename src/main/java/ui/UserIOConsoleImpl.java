@@ -229,15 +229,23 @@ public class UserIOConsoleImpl implements UserIO {
      * @return an double value as an answer to the message prompt within the min/max range
      */
 
+
     @Override
     public BigDecimal readBigDecimal(String prompt, BigDecimal min, BigDecimal max) {
-        BigDecimal result;
-        do {
+        BigDecimal result = new BigDecimal(prompt);
+        boolean between = isBetween(result, min, max);
+        while(!between) {
             result = new BigDecimal(prompt);
-        } while (result.compareTo(min) < 0 || result.compareTo(max) > 0);
+            between = isBetween(result, min, max);
+        }
 
         return result;
     }
+    boolean isBetween(BigDecimal num, BigDecimal min, BigDecimal max){
+        return num.compareTo(min) > 0 && num.compareTo(max) < 0;
+    }
+
+
 
 
 }
