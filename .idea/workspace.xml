@@ -7,6 +7,9 @@
     <list default="true" id="20e93261-7dab-487c-8998-1176d63145ba" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VendingMachine.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VendingMachine.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VendingMachineTestFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VendingMachineTestFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audit.txt" beforeDir="false" afterPath="$PROJECT_DIR$/audit.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/TestUserIO.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,13 +66,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.App">
-    <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="App" />
-      <module name="vending-machine-StevenKwok1984" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="src.main.java.App" />
       <module name="vending-machine-StevenKwok1984" />
@@ -96,7 +92,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendingMachineAuditDaoFileImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendingMachineDaoFileImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="vending-machine-StevenKwok1984" />
       <extension name="coverage">
         <pattern>
@@ -105,8 +101,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="src.test.java.dao" />
-      <option name="MAIN_CLASS_NAME" value="src.test.java.dao.VendingMachineAuditDaoFileImplTest" />
+      <option name="MAIN_CLASS_NAME" value="src.test.java.dao.VendingMachineDaoFileImplTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VendingMachineDaoFileImplTest.testGetItemInventory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="vending-machine-StevenKwok1984" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.test.java.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.test.java.dao" />
+      <option name="MAIN_CLASS_NAME" value="src.test.java.dao.VendingMachineDaoFileImplTest" />
+      <option name="METHOD_NAME" value="testGetItemInventory" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,10 +141,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.VendingMachineDaoFileImplTest" />
+        <item itemvalue="JUnit.VendingMachineDaoFileImplTest.testGetItemInventory" />
         <item itemvalue="Application.TestUserIO" />
         <item itemvalue="JUnit.VendingMachineServiceLayerImplTest" />
-        <item itemvalue="Application.App (1)" />
-        <item itemvalue="JUnit.VendingMachineAuditDaoFileImplTest" />
       </list>
     </recent_temporary>
   </component>
