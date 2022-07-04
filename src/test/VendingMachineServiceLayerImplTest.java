@@ -145,13 +145,13 @@ class VendingMachineServiceLayerImplTest {
         } catch (NoItemInventoryException e) {
         }
 
-        String malteasers = "Malteasers";
+        String malteasers = "Kitkat";
         try{
             //ACT
             testService.removeOneItemFromInventory(malteasers);
         } catch (NoItemInventoryException e) {
             if (testDao.getItemInventory(malteasers)>0){
-                fail("Malteasers are in stock, exception should not be thrown");
+                fail("Kitkat are in stock, exception should not be thrown");
             }
         }
     }
