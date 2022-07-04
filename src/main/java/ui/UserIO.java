@@ -27,5 +27,4 @@ public interface UserIO {
     BigDecimal readBigDecimal(String prompt);
 
 
-    BigDecimal readBigDecimal(String prompt, BigDecimal min, BigDecimal max);
 }
