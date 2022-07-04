@@ -18,7 +18,7 @@ import src.main.java.dao.VendingMachinePersistenceException;
 import src.main.java.dto.Item;
 
 class VendingMachineDaoFileImplTest {
-    VendingMachineDao testDao = new VendingMachineDaoFileImpl("VendingMachineTestFile.txt");
+    VendingMachineDao testDao = new VendingMachineDaoFileImpl("src/test/java/dao/VendingMachineTestFile.txt");
 
     public VendingMachineDaoFileImplTest() {
     }
@@ -38,22 +38,22 @@ class VendingMachineDaoFileImplTest {
     @Test
     public void testGetItem() throws VendingMachinePersistenceException {
         //ARRANGE
-        Item snickersClone = new Item("Snickers");
-        snickersClone.setCost(new BigDecimal("2.10"));
+        Item snickersClone = new Item("Starferry Pie");
+        snickersClone.setCost(new BigDecimal("2.50"));
         snickersClone.setInventory(0);
 
         //ACT
-        Item retrievedItem = testDao.getItem("Snickers");
+        Item retrievedItem = testDao.getItem("Starferry Pie");
 
         //ASSERT
         assertNotNull(retrievedItem, "Item should not be null");
-        assertEquals(retrievedItem, snickersClone,"The item retrieved should be snickers");
+        assertEquals(retrievedItem, snickersClone,"The item retrieved should be starferry pie");
     }
 
     @Test
     public void testRemoveOneItemFromInventory() throws VendingMachinePersistenceException {
         //ARRANGE
-        String itemName = "Malteasers";
+        String itemName = "McCoys";
 
         //ACT
         //get the inventory before we remove one
@@ -83,7 +83,7 @@ class VendingMachineDaoFileImplTest {
     }
 
     @Test
-    public void testGetMapOfItemNamesInStockWithCosts() throws VendingMachinePersistenceException {
+    public void testGetMapOfItemNamesInStockWithPrices() throws VendingMachinePersistenceException {
 
         //ACT
         Map<String,BigDecimal> itemsInStock = testDao.getMapOfItemNamesInStockWithPrices();
@@ -91,14 +91,13 @@ class VendingMachineDaoFileImplTest {
         //ASSERT
         //there are 0 snickers left, so it should not be included.
         assertFalse(itemsInStock.containsKey("Snickers"));
-        //There are 7 items in total, only snickers  is out of stock, so there should be 6 items
-        assertEquals(itemsInStock.size(),6,"The menu list should contain 6 items.");
-        assertTrue(itemsInStock.containsKey("Kitkat") &&
-                itemsInStock.containsKey("McCoys") &&
-                itemsInStock.containsKey("Haribo") &&
-                itemsInStock.containsKey("Malteasers") &&
-                itemsInStock.containsKey("Starburst") &&
-                itemsInStock.containsKey("Cereal bar"));
+        assertFalse(itemsInStock.containsKey("Starferry Pie"));
+        //There are 6 items in total, only snickers and Starferry Pie is out of stock, so there should be 4 items
+        assertEquals(itemsInStock.size(),6,"The menu list should contain 4 items.");
+        assertTrue(itemsInStock.containsKey("Cadbury Heroes") &&
+                itemsInStock.containsKey("Kitkat") &&
+                itemsInStock.containsKey("Mini Eggs") &&
+                itemsInStock.containsKey("Cheese Snack"));
     }
 
 }

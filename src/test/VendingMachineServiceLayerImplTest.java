@@ -4,8 +4,7 @@ package src.test;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,7 +23,7 @@ import src.main.java.service.VendingMachineServiceLayerImpl;
 class VendingMachineServiceLayerImplTest {
 
     // initialisation
-    VendingMachineDao testDao = new VendingMachineDaoFileImpl("VendingMachineTestFile.txt");
+    VendingMachineDao testDao = new VendingMachineDaoFileImpl("src/test/java/dao/VendingMachineTestFile.txt");
     String testAuditFile = "testAuditFile.txt";
     VendingMachineAuditDao testAuditDao = new VendingMachineAuditDaoFileImpl();
     VendingMachineServiceLayer testService = new VendingMachineServiceLayerImpl(testAuditDao,testDao);
