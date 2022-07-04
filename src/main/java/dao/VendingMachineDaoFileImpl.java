@@ -19,88 +19,126 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class VendingMachineDaoFileImpl implements VendingMachineDao {
-    // Question - if we are only reading from and not writing to the DAO, it okay to just make a copy of it.
+    private Map <String, Item> items = new HashMap<>();
+    public static final String DELIMITER = "::";
+    private final String VENDING_MACHINE_FILE;
 
-    VendingMachineDao testDao = new VendingMachineDaoFileImpl("VendingMachineTestFile.txt");
-
-    public VendingMachineDaoFileImplTest() {
+    public VendingMachineDaoFileImpl() {
+        VENDING_MACHINE_FILE = "VendingMachine.txt";
     }
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    @BeforeEach
-    public void setUp() {
-    }
-    @AfterEach
-    public void tearDown() {
+    public VendingMachineDaoFileImpl(String testFile) {
+        VENDING_MACHINE_FILE = testFile;
     }
 
-    @Test
-    public void testGetItem() throws VendingMachinePersistenceException {
-        //ARRANGE
-        Item snickersClone = new Item("Snickers");
-        snickersClone.setCost(new BigDecimal("2.10"));
-        snickersClone.setInventory(0);
-
-        //ACT
-        Item retrievedItem = testDao.getItem("Snickers");
-
-        //ASSERT
-        assertNotNull(retrievedItem, "Item should not be null");
-        assertEquals(retrievedItem, snickersClone,"The item retrieved should be snickers");
-
-    }
-    @Test
-    public void testRemoveOneItemFromInventory() throws VendingMachinePersistenceException {
-        //ARRANGE
-        String itemName = "Malteasers";
-
-        //ACT
-        //get the inventory before we remove one
-        int inventoryBefore = testDao.getItemInventory(itemName);
-
-        //remove one item
-        testDao.removeOneItemFromInventory(itemName);
-
-        //get the inventory after we have removed one
-        int inventoryAfter = testDao.getItemInventory(itemName);
-
-        assertTrue(inventoryAfter<inventoryBefore,"The inventory after should be less than before");
-        assertEquals(inventoryAfter,inventoryBefore-1,"The inventory after should be one less than it was"
-                + "before");
-
-    }
-    @Test
-    public void testGetItemInventory() throws VendingMachinePersistenceException {
-        //ARRANGE
-        String itemName = "Snickers";
-
-        //ACT
-        int retrievedInventory = testDao.getItemInventory(itemName);
-
-        //ASSERT
-        assertEquals(retrievedInventory,0,"There are 0 items of snickers left.");
+    @Override
+    public int getItemInventory(String name) throws VendingMachinePersistenceException {
+        loadMachine();
+        return items.get(name).getInventory();
     }
 
-    @Test
-    public void testGetMapOfItemNamesInStockWithCosts() throws VendingMachinePersistenceException {
+    @Override
+    public void removeOneItemFromInventory(String name) throws VendingMachinePersistenceException {
+        loadMachine();
+        int prevInventory = items.get(name).getInventory();
+        items.get(name).setInventory(prevInventory-1);
+        writeMachine();
+    }
 
-        //ACT
-        Map<String,BigDecimal> itemsInStock = testDao.getMapOfItemNamesInStockWithCosts();
 
-        //ASSERT
-        //there are 0 snickers left, so it should not be included.
-        assertFalse(itemsInStock.containsKey("Snickers"));
-        //There are 7 items in total, only snickers  is out of stock, so there should be 6 items
-        assertEquals(itemsInStock.size(),6,"The menu list should contain 6 items.");
-        assertTrue(itemsInStock.containsKey("Kitkat") &&
-                itemsInStock.containsKey("McCoys") &&
-                itemsInStock.containsKey("Haribo") &&
-                itemsInStock.containsKey("Malteasers") &&
-                itemsInStock.containsKey("Starburst") &&
-                itemsInStock.containsKey("Cereal bar"));
+    @Override
+    public Item getItem(String name) throws VendingMachinePersistenceException {
+        loadMachine();
+        return items.get(name);
+    }
+
+
+
+
+    @Override
+    public Map<String,BigDecimal> getMapOfItemNamesInStockWithPrices() throws VendingMachinePersistenceException{
+        loadMachine();
+
+        Map<String, BigDecimal> itemsInStockWithCosts = items.entrySet()
+                .stream()
+                .filter(map -> map.getValue().getInventory() > 0)
+                .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue().getCost()));
+
+        return itemsInStockWithCosts;
+
+    }
+
+    @Override
+    public  List<Item> getAllItems() throws VendingMachinePersistenceException {
+        loadMachine();
+        return new ArrayList(items.values());
+    }
+
+    @Override
+    public Map<BigDecimal, BigDecimal> getChangePerCoin(Item item, BigDecimal money) {
+        BigDecimal itemCost = item.getCost();
+        Map<BigDecimal, BigDecimal> changeDuePerCoin = Change.changeDuePerCoin(itemCost, money);
+        return changeDuePerCoin;
+    }
+
+    private String marshallItem (Item anItem) {
+        String itemAsText = anItem.getName() + DELIMITER;
+        itemAsText += anItem.getCost() + DELIMITER;
+        itemAsText += anItem.getInventory();
+        return itemAsText;
+    }
+
+    private Item unmarshallItem (String itemAsText){
+        //split the string into an array of strings at the delimiter
+        String [] itemTokens = itemAsText.split("::");
+        String name = itemTokens[0];
+        Item itemFromFile = new Item(name);
+        BigDecimal bigDecimal = new BigDecimal(itemTokens[1]);
+        itemFromFile.setCost(bigDecimal);
+        itemFromFile.setInventory(Integer.parseInt(itemTokens[2]));
+        return itemFromFile;
+    }
+
+
+    private void loadMachine() throws VendingMachinePersistenceException {
+        Scanner scanner;
+
+        try {
+            // Create Scanner for reading the file
+            scanner = new Scanner(
+                    new BufferedReader(
+                            new FileReader(VENDING_MACHINE_FILE)));
+        } catch (FileNotFoundException e) {
+            throw new VendingMachinePersistenceException(
+                    "-_- Could not load item data into memory.", e);
+        }
+        String currentLine;
+        Item currentItem;
+
+        while (scanner.hasNextLine()) {
+            currentLine = scanner.nextLine();
+            currentItem = unmarshallItem(currentLine);
+            items.put(currentItem.getName(), currentItem);
+        }
+        scanner.close();
+    }
+
+
+
+    private void writeMachine() throws VendingMachinePersistenceException {
+        PrintWriter out;
+
+        try {
+            out = new PrintWriter(new FileWriter(VENDING_MACHINE_FILE));
+        } catch (IOException e) {
+            throw new VendingMachinePersistenceException("Could not save student data.", e);
+        }
+        String itemAsText;
+        List <Item> itemList = this.getAllItems();
+        for (Item currentItem : itemList) {
+            itemAsText = marshallItem(currentItem);
+            out.println(itemAsText);
+            out.flush();
+        }
+        out.close();
     }
 }
