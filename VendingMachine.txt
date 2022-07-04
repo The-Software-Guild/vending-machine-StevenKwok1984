@@ -1,7 +1,18 @@
-Snickers::2.10::0
-Kitkat::1.50::17
-McCoys::1.30::17
+Angel Slices::1.10::3
 Haribo::1.60::9
-Malteasers::2.10::18
-Starburst::1.05::17
+Cheese Snack::2.10::4
+Malteasers::2.10::8
+Cadbury Fingers::1.55::1
+Starburst::1.05::16
+Milkybar::1.00::2
+Vita Lamon Candy::1.75::6
 Cereal Bar::2.50::17
+Activia Cherry::2.20::3
+Snickers::2.10::0
+Coca Cola::1.5::10
+Activia Orange::2.20::6
+Cadbury Heroes::3.10::11
+Kitkat::1.50::7
+Mini Eggs::1.00::8
+Black Pudding::2.30::5
+McCoys::1.30::17
