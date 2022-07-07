@@ -5,3 +5,4 @@
 2022-07-02T00:26:08.419059500 :  One Cereal bar removed
 2022-07-03T23:56:44.373814800 :  One McCoys removed
 2022-07-04T12:36:04.262259900 :  One Mini Eggs removed
+2022-07-07T09:19:37.470739 :  One Cadbury Fingers removed

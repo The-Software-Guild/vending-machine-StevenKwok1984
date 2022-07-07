@@ -12,7 +12,7 @@ Kitkat::1.50::7
 Haribo::1.60::9
 Malteasers::2.10::8
 Angel Slices::1.10::3
-Cadbury Fingers::1.55::1
+Cadbury Fingers::1.55::0
 Starburst::1.05::16
 Cheese Snack::2.10::4
 Mini Eggs::1.00::7

@@ -7,40 +7,40 @@ public class VendingMachineView {
 
     private UserIO io;
 
+    // for loading user io
     public VendingMachineView (UserIO io) {
         this.io = io;
     }
 
+    // display the manu banner
     public void displayMenuBanner() {
         io.print("=== Menu ===");
     }
+
+    // for obtaining the amount of the money
     public BigDecimal getMoney() {
         return io.readBigDecimal("Enter the amount of money in dollars before selection");
     }
 
+    // for showing all items in stock with price
     public void displayMenu(Map<String, BigDecimal> itemsInStockWithPrices) {
         itemsInStockWithPrices.entrySet().forEach(entry ->{
             System.out.println(entry.getKey() + ": $" + entry.getValue());
         });
     }
 
+    // ask user to select items
     public String getItemSelection() {
         return io.readString("Select an item from the menu above or 'exit' to quit");
     }
 
+    // for providing changes
     public void displayEnjoyBanner(String name) {
         io.print("Here is your change.");
         io.print("Enjoy your " + name + "!");
     }
 
-    public void displayInsufficientFunds(BigDecimal money) {
-        io.print("Insufficient funds, you only have input $" + money);
-    }
-
-    public void displayItemOutOfStock(String name) {
-        io.print("Error, " + name + " is out of stock.");
-    }
-
+    // display changes per coin
     public void displayChangeDuePerCoin(Map<BigDecimal, BigDecimal> changeDuePerCoin) {
         changeDuePerCoin.entrySet().forEach(entry -> {
             System.out.println(entry.getKey() + "c : " + entry.getValue());
@@ -55,25 +55,15 @@ public class VendingMachineView {
         io.print("Unknown Command!!!");
     }
 
+    // for displaying error message with title
     public void displayErrorMessage (String errorMsg) {
         io.print("=== Error ===");
         io.print(errorMsg);
     }
 
-    public void displayPleaseTryAgainMsg() {
+    public void displaySelectAnotherMsg() {
         io.print("Please select something else.");
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

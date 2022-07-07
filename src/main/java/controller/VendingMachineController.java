@@ -17,11 +17,13 @@ public class VendingMachineController {
     private VendingMachineView view;
     private VendingMachineServiceLayer service;
 
+    // constructor for using view and service layer
     public VendingMachineController(VendingMachineView view, VendingMachineServiceLayer service) {
         this.view = view;
         this.service = service;
     }
 
+    // main part to run the programme
     public void run() {
         boolean keepGoing = true;
         String itemSelection = "";
@@ -39,41 +41,40 @@ public class VendingMachineController {
                 itemSelection = getItemSelection();
 
                 //If the user selects Exit, the program is exited
-                if (itemSelection.equalsIgnoreCase("Exit")) {
-                    keepGoing = false;
+                if (itemSelection.equalsIgnoreCase("exit")) {
                     break;
                 }
                 getItem(itemSelection, inputMoney);
                 keepGoing = false;
-                break;
 
             } catch (InsufficientFundsException | NoItemInventoryException | VendingMachinePersistenceException e) {
                 view.displayErrorMessage(e.getMessage());
-                view.displayPleaseTryAgainMsg();
+                view.displaySelectAnotherMsg();
             }
         }
         exitMessage();
 
     }
+
+    // get the menu of a list of items
     private void getMenu() throws VendingMachinePersistenceException {
         Map<String, BigDecimal> itemsInStockWithPrices = service.getItemsInStockWithPrices();
         view.displayMenu(itemsInStockWithPrices);
     }
 
+    // obtain money from user
     private BigDecimal getMoney() {
         return view.getMoney();
     }
 
+    // for user selection items
     private String getItemSelection(){
         return view.getItemSelection();
     }
 
+    // display "see you" message
     private void exitMessage() {
         view.displayExitBanner();
-    }
-
-    private void unknownCommand() {
-        view.displayUnknownCommandBanner();
     }
 
     private void getItem(String name, BigDecimal money) throws InsufficientFundsException, NoItemInventoryException, VendingMachinePersistenceException {
@@ -82,5 +83,4 @@ public class VendingMachineController {
         view.displayChangeDuePerCoin(changeDuePerCoin);
         view.displayEnjoyBanner(name);
     }
-
 }
