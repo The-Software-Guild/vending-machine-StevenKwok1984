@@ -17,11 +17,13 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     private VendingMachineAuditDao auditDao;
     private VendingMachineDao dao;
 
+    // constructors
     public VendingMachineServiceLayerImpl(VendingMachineAuditDao auditDao, VendingMachineDao dao) {
         this.auditDao = auditDao;
         this.dao = dao;
     }
 
+    // override all items from dao
     @Override
     public void checkIfEnoughMoney(Item item, BigDecimal inputMoney) throws InsufficientFundsException {
         //Checks if the user has input enough money to buy selected item
@@ -69,7 +71,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     public void removeOneItemFromInventory (String name) throws NoItemInventoryException, VendingMachinePersistenceException {
         //Remove one item from the inventory only when there are items to be removed, i.e. inventory>0.
         if (dao.getItemInventory(name)>0) {
-            dao.removeOneItemFromInventory(name);
+            dao.reduceOneItemFromInventory(name);
             //if an items removed, write to the audit log
             auditDao.writeAuditEntry(" One " + name + " removed");
         } else {

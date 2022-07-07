@@ -60,7 +60,7 @@ class VendingMachineDaoFileImplTest {
         int inventoryBefore = testDao.getItemInventory(itemName);
 
         //remove one item
-        testDao.removeOneItemFromInventory(itemName);
+        testDao.reduceOneItemFromInventory(itemName);
 
         //get the inventory after we have removed one
         int inventoryAfter = testDao.getItemInventory(itemName);

@@ -30,34 +30,33 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         VENDING_MACHINE_FILE = testFile;
     }
 
+    // obtain number of items
     @Override
     public int getItemInventory(String name) throws VendingMachinePersistenceException {
-        loadMachine();
+        loadItem();
         return items.get(name).getInventory();
     }
 
+    // reduce number of items after purchasing
     @Override
-    public void removeOneItemFromInventory(String name) throws VendingMachinePersistenceException {
-        loadMachine();
+    public void reduceOneItemFromInventory(String name) throws VendingMachinePersistenceException {
+        loadItem();
         int prevInventory = items.get(name).getInventory();
         items.get(name).setInventory(prevInventory-1);
-        writeMachine();
+        writeItem();
     }
 
-
+    // obtain an item
     @Override
     public Item getItem(String name) throws VendingMachinePersistenceException {
-        loadMachine();
+        loadItem();
         return items.get(name);
     }
 
-
-
-
+    // obtain items in stock with price
     @Override
     public Map<String,BigDecimal> getMapOfItemNamesInStockWithPrices() throws VendingMachinePersistenceException{
-        loadMachine();
-
+        loadItem();
         Map<String, BigDecimal> itemsInStockWithCosts = items.entrySet()
                 .stream()
                 .filter(map -> map.getValue().getInventory() > 0)
@@ -67,12 +66,14 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
 
     }
 
+    // return the lis of items
     @Override
     public  List<Item> getAllItems() throws VendingMachinePersistenceException {
-        loadMachine();
+        loadItem();
         return new ArrayList(items.values());
     }
 
+    // get changes per coin from change class in dto
     @Override
     public Map<BigDecimal, BigDecimal> getChangePerCoin(Item item, BigDecimal money) {
         BigDecimal itemCost = item.getCost();
@@ -80,6 +81,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         return changeDuePerCoin;
     }
 
+    // marshall Items for formatting items
     private String marshallItem (Item anItem) {
         String itemAsText = anItem.getName() + DELIMITER;
         itemAsText += anItem.getCost() + DELIMITER;
@@ -87,6 +89,26 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         return itemAsText;
     }
 
+    // writing items in the text file
+    private void writeItem() throws VendingMachinePersistenceException {
+        PrintWriter out;
+
+        try {
+            out = new PrintWriter(new FileWriter(VENDING_MACHINE_FILE));
+        } catch (IOException e) {
+            throw new VendingMachinePersistenceException("Could not save student data.", e);
+        }
+        String itemAsText;
+        List <Item> itemList = this.getAllItems();
+        for (Item currentItem : itemList) {
+            itemAsText = marshallItem(currentItem);
+            out.println(itemAsText);
+            out.flush();
+        }
+        out.close();
+    }
+
+    // unmarshall items
     private Item unmarshallItem (String itemAsText){
         //split the string into an array of strings at the delimiter
         String [] itemTokens = itemAsText.split("::");
@@ -98,8 +120,8 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         return itemFromFile;
     }
 
-
-    private void loadMachine() throws VendingMachinePersistenceException {
+    // load items from text file into memory
+    private void loadItem() throws VendingMachinePersistenceException {
         Scanner scanner;
 
         try {
@@ -124,21 +146,5 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
 
 
 
-    private void writeMachine() throws VendingMachinePersistenceException {
-        PrintWriter out;
 
-        try {
-            out = new PrintWriter(new FileWriter(VENDING_MACHINE_FILE));
-        } catch (IOException e) {
-            throw new VendingMachinePersistenceException("Could not save student data.", e);
-        }
-        String itemAsText;
-        List <Item> itemList = this.getAllItems();
-        for (Item currentItem : itemList) {
-            itemAsText = marshallItem(currentItem);
-            out.println(itemAsText);
-            out.flush();
-        }
-        out.close();
-    }
 }

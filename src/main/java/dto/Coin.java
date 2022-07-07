@@ -1,10 +1,12 @@
 package src.main.java.dto;
 
 public enum Coin {
-    //Enum is a special class that represents a group of constants, like final variables
+
+    // a new variable with four types of values
     QUARTER(25), DIME(10), NICKEL(5), PENNY(1);
     private final int value;
 
+    // getters and setters
     Coin (int value) {
         this.value = value;
     }
@@ -13,6 +15,7 @@ public enum Coin {
         return value;
     }
 
+    // return the b=value of each variable in string, for changing in future
     public String toString() {
         switch (this) {
             case QUARTER:

@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20e93261-7dab-487c-8998-1176d63145ba" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/VendingMachineTestFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VendingMachineTestFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/VendingMachineServiceLayerImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/VendingMachineServiceLayerImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDaoFileImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDaoFileImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VendingMachinePersistenceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/VendingMachinePersistenceException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Change.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Change.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Coin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dao/VendingMachineDaoFileImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dao/VendingMachineDaoFileImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
